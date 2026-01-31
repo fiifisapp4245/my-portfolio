@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Menu, X, ChevronLeft, ChevronRight, Mail, Phone, Linkedin } from "lucide-react";
+import { Menu, X, ChevronLeft, ChevronRight, ArrowLeft, Mail, Phone, Linkedin } from "lucide-react";
 
 type IconProps = React.ComponentProps<typeof Menu> & { className?: string };
 
@@ -11,6 +11,7 @@ export const MenuIcon = withDefaults(Menu);
 export const CloseIcon = withDefaults(X);
 export const ChevronLeftIcon = withDefaults(ChevronLeft);
 export const ChevronRightIcon = withDefaults(ChevronRight);
+export const ArrowLeftIcon = withDefaults(ArrowLeft);
 export const MailIcon = withDefaults(Mail);
 export const PhoneIcon = withDefaults(Phone);
 export const LinkedinIcon = withDefaults(Linkedin);

@@ -139,3 +139,8 @@
 .ibm-plex-sans-500 { font-weight: 500; }
 .ibm-plex-sans-600 { font-weight: 600; }
 .ibm-plex-sans-700 { font-weight: 700; }
+
+/* Scroll margin for fixed header */
+section[id] {
+  scroll-margin-top: 100px;
+}

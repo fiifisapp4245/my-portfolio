@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative w-full overflow-hidden bg-transparent">
+    <section id="home" className="relative w-full overflow-hidden bg-white -mt-[72px]">
       {/* Background illustration */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -33,8 +33,8 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative z-20 mx-auto max-w-5xl px-4 sm:px-6 pt-36 md:pt-52 lg:pt-64 pb-20 text-center sm:text-left">
-        <h1 className="font-sans text-[40px] sm:text-[48px] md:text-[64px] font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-50">
+      <div className="relative z-20 mx-auto max-w-6xl px-4 sm:px-6 pt-36 md:pt-52 lg:pt-64 pb-20 text-center sm:text-left">
+        <h1 className="font-sans text-[40px] sm:text-[48px] md:text-[64px] font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-50 max-w-4xl">
           Translating complexity into operational clarity.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-700 dark:text-zinc-300 font-sans">
