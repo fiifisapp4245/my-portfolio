@@ -14,8 +14,8 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full font-sans py-4">
-      <div className="mx-auto flex max-w-lg w-full items-center justify-between gap-8 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200/50 shadow-sm px-8 py-4 md:px-8">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full font-sans py-4 px-4 sm:px-6">
+      <div className="mx-auto flex max-w-lg w-full items-center justify-between gap-4 sm:gap-8 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200/50 shadow-sm px-4 sm:px-8 py-3 sm:py-4">
         <Link href="/" className="flex items-center gap-3">
           <Image src="/fiifis_logo.svg" alt="Fiifi logo" width={84} height={24} />
         </Link>
@@ -47,13 +47,13 @@ export default function Header() {
           </button>
 
           {open && (
-            <div className="absolute right-6 top-20 w-48 rounded-lg bg-white/95 backdrop-blur-md border border-zinc-200 shadow-lg p-4">
-              <ul className="flex flex-col gap-2">
+            <div className="fixed left-4 right-4 top-20 rounded-2xl bg-white/95 backdrop-blur-md border border-zinc-200 shadow-lg p-6">
+              <ul className="flex flex-col gap-1">
                 {navItems.map((item) => (
                   <li key={item.href}>
                     <a
                       href={item.href}
-                      className="block rounded-md px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50"
+                      className="block rounded-xl px-4 py-3 text-base font-medium text-zinc-700 hover:bg-zinc-50 transition-colors"
                       onClick={() => setOpen(false)}
                     >
                       {item.label}

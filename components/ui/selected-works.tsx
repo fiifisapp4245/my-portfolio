@@ -8,13 +8,15 @@ import { getAllProjects } from "@/data/projects";
 const projects = getAllProjects();
 
 export default function SelectedWorks() {
-  const [page, setPage] = useState(0);
-  const projectsPerPage = 3;
-  const maxPage = Math.ceil(projects.length / projectsPerPage) - 1;
+  // Single index for current project (used for mobile single-card view)
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Get projects for current page
-  const startIndex = page * projectsPerPage;
-  const visibleProjects = projects.slice(startIndex, startIndex + projectsPerPage);
+  // On mobile: show 1 card, navigate 1 at a time
+  // On desktop: show 3 cards starting from currentIndex
+  const maxIndex = projects.length - 1;
+
+  // Get projects to display (up to 3 starting from current index)
+  const visibleProjects = projects.slice(currentIndex, currentIndex + 3);
 
   return (
     <section id="work" className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
@@ -24,19 +26,19 @@ export default function SelectedWorks() {
         </h2>
 
         {/* Navigation arrows */}
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           <button
-            aria-label="Previous projects"
-            onClick={() => setPage((p) => Math.max(0, p - 1))}
-            disabled={page === 0}
+            aria-label="Previous project"
+            onClick={() => setCurrentIndex((i) => Math.max(0, i - 1))}
+            disabled={currentIndex === 0}
             className="h-10 w-10 rounded-full border border-zinc-200 bg-white text-zinc-400 flex items-center justify-center transition-colors hover:border-zinc-300 hover:text-zinc-600 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <ChevronLeftIcon size={18} className="text-current" />
           </button>
           <button
-            aria-label="Next projects"
-            onClick={() => setPage((p) => Math.min(maxPage, p + 1))}
-            disabled={page >= maxPage}
+            aria-label="Next project"
+            onClick={() => setCurrentIndex((i) => Math.min(maxIndex, i + 1))}
+            disabled={currentIndex >= maxIndex}
             className="h-10 w-10 rounded-full border border-zinc-200 bg-white text-zinc-400 flex items-center justify-center transition-colors hover:border-zinc-300 hover:text-zinc-600 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <ChevronRightIcon size={18} className="text-current" />
@@ -44,12 +46,21 @@ export default function SelectedWorks() {
         </div>
       </div>
 
+      {/* Page indicator - mobile only */}
+      <div className="flex justify-center mb-4 md:hidden">
+        <span className="text-sm text-zinc-400">
+          {currentIndex + 1} of {projects.length}
+        </span>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {visibleProjects.map((project) => (
+        {visibleProjects.map((project, idx) => (
           <Link
             key={project.slug}
             href={`/projects/${project.slug}`}
-            className="group block bg-slate-50 rounded-2xl p-8 hover:bg-slate-100 transition-colors"
+            className={`group block bg-slate-50 rounded-2xl p-8 hover:bg-slate-100 transition-colors ${
+              idx === 0 ? "" : "hidden md:block"
+            }`}
           >
             {/* Large Index Number */}
             <span className="block text-7xl md:text-8xl font-bold text-blue-100 mb-6">

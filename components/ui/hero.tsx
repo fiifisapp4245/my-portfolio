@@ -33,7 +33,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative z-20 mx-auto max-w-6xl px-4 sm:px-6 pt-36 md:pt-52 lg:pt-64 pb-20 text-center sm:text-left">
+      <div className="relative z-20 mx-auto max-w-6xl px-4 sm:px-6 pt-44 sm:pt-48 md:pt-52 lg:pt-64 pb-20 text-center sm:text-left">
         <h1 className="font-sans text-[40px] sm:text-[48px] md:text-[64px] font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-50 max-w-4xl">
           Translating complexity into operational clarity.
         </h1>
