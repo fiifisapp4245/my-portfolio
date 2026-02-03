@@ -1,15 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "./icons";
 import { getAllProjects } from "@/data/projects";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const projects = getAllProjects();
 
 export default function SelectedWorks() {
   // Single index for current project (used for mobile single-card view)
   const [currentIndex, setCurrentIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   // On mobile: show 1 card, navigate 1 at a time
   // On desktop: show 3 cards starting from currentIndex
@@ -18,9 +29,87 @@ export default function SelectedWorks() {
   // Get projects to display (up to 3 starting from current index)
   const visibleProjects = projects.slice(currentIndex, currentIndex + 3);
 
+  useEffect(() => {
+    if (hasAnimated) return;
+
+    const ctx = gsap.context(() => {
+      // Animate section header
+      gsap.fromTo(
+        headerRef.current,
+        {
+          opacity: 0,
+          y: 40
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
+      // Animate cards with stagger
+      const cards = cardsRef.current?.querySelectorAll(".project-card");
+      if (cards) {
+        gsap.fromTo(
+          cards,
+          {
+            opacity: 0,
+            y: 60,
+            scale: 0.95
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: cardsRef.current,
+              start: "top 75%",
+              toggleActions: "play none none none",
+              onEnter: () => setHasAnimated(true)
+            }
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [hasAnimated]);
+
+  // Animate card transitions when navigating
+  useEffect(() => {
+    if (!hasAnimated) return;
+
+    const cards = cardsRef.current?.querySelectorAll(".project-card");
+    if (cards) {
+      gsap.fromTo(
+        cards,
+        {
+          opacity: 0.5,
+          x: 20
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.4,
+          stagger: 0.1,
+          ease: "power2.out"
+        }
+      );
+    }
+  }, [currentIndex, hasAnimated]);
+
   return (
-    <section id="work" className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
-      <div className="flex items-center justify-between mb-12">
+    <section ref={sectionRef} id="work" className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
+      <div ref={headerRef} className="flex items-center justify-between mb-12">
         <h2 className="text-3xl md:text-4xl font-semibold text-zinc-900">
           Selected Works
         </h2>
@@ -53,12 +142,12 @@ export default function SelectedWorks() {
         </span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {visibleProjects.map((project, idx) => (
           <Link
             key={project.slug}
             href={`/projects/${project.slug}`}
-            className={`group block bg-slate-50 rounded-2xl p-8 hover:bg-slate-100 transition-colors ${
+            className={`project-card group block bg-slate-50 rounded-2xl p-8 hover:bg-slate-100 transition-colors ${
               idx === 0 ? "" : "hidden md:block"
             }`}
           >

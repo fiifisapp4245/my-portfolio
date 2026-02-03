@@ -5,29 +5,25 @@ const workExperience = [
     company: "Deutsche Telekom",
     role: "UX Designer",
     period: "2025 → Now",
-    logo: "/companies/deutsche-telekom.svg",
-    color: "#E20074", // Telekom magenta
+    logo: "/logos/dl-telekom-logo-01 1.png",
   },
   {
     company: "AmaliTech",
     role: "UX Designer",
     period: "2021 → Now",
-    logo: "/companies/amalitech.svg",
-    color: "#F59E0B", // Yellow/amber
+    logo: "/logos/amalitech_icon.jpeg.png",
   },
   {
     company: "Broadspectrum DP.",
     role: "UX Designer",
     period: "2024 → 2025",
-    logo: "/companies/broadspectrum.svg",
-    color: "#6B7280", // Gray
+    logo: "/logos/bdp-main 1.png",
   },
   {
     company: "Duapa Werkspace",
     role: "UX Designer",
     period: "2023 → 2024",
-    logo: "/companies/duapa.svg",
-    color: "#3B82F6", // Blue
+    logo: "/logos/duapa logo 1.png",
   },
 ];
 
@@ -53,8 +49,8 @@ export default function AboutMe() {
           <div className="space-y-4 text-zinc-600 text-sm leading-relaxed">
             <p>
               I've worked on ERP platforms, telecommunications infrastructure
-              tools, and internal knowledge systems — designing for technical
-              complexity, operational efficiency, and cross-functional teams.
+              tools, and internal knowledge systems by simplifying technical
+              complexity into workflows that operations teams can actually use.
             </p>
 
             <p>
@@ -64,9 +60,9 @@ export default function AboutMe() {
             </p>
 
             <p>
-              I multiply impact by translating technical logic into usable
-              workflows and collaborating closely with engineering teams to
-              ensure design-to-code fidelity.
+              I multiply impact by bridging the gap between technical logic and
+              human usability, and collaborating closely with engineering teams
+              to ensure design-to-code fidelity.
             </p>
 
             <p>
@@ -88,18 +84,23 @@ export default function AboutMe() {
                 key={index}
                 className="flex items-center gap-4 p-4 bg-zinc-50 rounded-xl"
               >
-                {/* Company logo placeholder */}
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 text-white font-bold text-sm"
-                  style={{ backgroundColor: job.color }}
-                >
-                  {job.company.charAt(0)}
+                {/* Company logo */}
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-zinc-100 overflow-hidden">
+                  <Image
+                    src={job.logo}
+                    alt={`${job.company} logo`}
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                  />
                 </div>
 
                 {/* Job details */}
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-semibold text-zinc-900">{job.company}</h3>
+                    <h3 className="font-semibold text-zinc-900">
+                      {job.company}
+                    </h3>
                     <span className="text-sm text-zinc-400">{job.period}</span>
                   </div>
                   <p className="text-sm text-zinc-500">{job.role}</p>

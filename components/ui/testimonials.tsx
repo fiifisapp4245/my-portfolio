@@ -5,6 +5,7 @@ const testimonials = [
     author: "Innocent Kuwornu",
     role: "Expert Frontend developer",
     company: "AmaliTech",
+    linkedin: "https://www.linkedin.com/in/edem-kuwornu/",
   },
   {
     quote:
@@ -12,6 +13,7 @@ const testimonials = [
     author: "Elliot Awayiga",
     role: "Design Lead (Expert)",
     company: "AmaliTech",
+    linkedin: "https://www.linkedin.com/in/elliott-kobby-awayiga/",
   },
   {
     quote:
@@ -19,13 +21,15 @@ const testimonials = [
     author: "Solomon Appier-Sign",
     role: "Team lead",
     company: "Broadspectrum",
+    linkedin: "https://www.linkedin.com/in/solomon-appier-sign/",
   },
   {
     quote:
       "Fiifi is exceptionally smart in how he approaches design, not just visually, but in how he uses tools and applies structured processes to solve problems effectively.",
     author: "Aakash Toshniwal",
-    role: "Technical Consultant",
-    company: "T-mobile",
+    role: "Senior Consultant",
+    company: "Deutsche Telekom",
+    linkedin: "https://www.linkedin.com/in/aakash-toshniwal-050821153/",
   },
 ];
 
@@ -48,9 +52,14 @@ export default function Testimonials() {
                 {testimonial.quote}
               </p>
               <div>
-                <p className="font-semibold text-zinc-900">
+                <a
+                  href={testimonial.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-zinc-900 hover:text-zinc-600 transition-colors"
+                >
                   {testimonial.author}
-                </p>
+                </a>
                 <p className="text-sm text-zinc-500">
                   {testimonial.role} · {testimonial.company}
                 </p>

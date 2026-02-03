@@ -2,20 +2,43 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MenuIcon, CloseIcon } from "./icons";
+import gsap from "gsap";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLDivElement>(null);
   const navItems = [
     { href: "/#work", label: "Work" },
     { href: "/#about", label: "About" },
     { href: "/#contact", label: "Contact" },
   ];
 
+  useEffect(() => {
+    // Animate header on mount
+    gsap.fromTo(
+      headerRef.current,
+      {
+        opacity: 0,
+        y: -20
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        delay: 0.1,
+        ease: "power2.out"
+      }
+    );
+  }, []);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full font-sans py-4 px-4 sm:px-6">
-      <div className="mx-auto flex max-w-lg w-full items-center justify-between gap-4 sm:gap-8 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200/50 shadow-sm px-4 sm:px-8 py-3 sm:py-4">
+      <div
+        ref={headerRef}
+        className="mx-auto flex max-w-lg w-full items-center justify-between gap-4 sm:gap-8 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200/50 shadow-sm px-4 sm:px-8 py-3 sm:py-4"
+      >
         <Link href="/" className="flex items-center gap-3">
           <Image src="/fiifis_logo.svg" alt="Fiifi logo" width={84} height={24} />
         </Link>
@@ -47,7 +70,7 @@ export default function Header() {
           </button>
 
           {open && (
-            <div className="fixed left-4 right-4 top-20 rounded-2xl bg-white/95 backdrop-blur-md border border-zinc-200 shadow-lg p-6">
+            <div className="fixed left-4 right-4 top-20 rounded-2xl bg-white/95 backdrop-blur-md border border-zinc-200 shadow-lg p-6 animate-in fade-in slide-in-from-top-2 duration-200">
               <ul className="flex flex-col gap-1">
                 {navItems.map((item) => (
                   <li key={item.href}>
