@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Project } from "@/types/project";
 import { ArrowLeftIcon } from "@/components/ui/icons";
 
@@ -63,11 +64,14 @@ export function CaseStudyHero({ project }: CaseStudyHeroProps) {
       {/* Hero image */}
       {project.heroImage && (
         <div className="mt-12 mx-auto max-w-5xl px-4 sm:px-6">
-          <div className="aspect-video rounded-xl overflow-hidden bg-zinc-100 border border-zinc-200">
-            <img
+          <div className="relative aspect-video rounded-xl overflow-hidden bg-zinc-100 border border-zinc-200">
+            <Image
               src={project.heroImage}
               alt={project.title}
-              className="w-full h-full object-cover"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1100px"
+              className="object-cover"
             />
           </div>
         </div>
