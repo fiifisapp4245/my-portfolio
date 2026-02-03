@@ -125,6 +125,25 @@
   }
 }
 
+/* Accessibility: Focus styles for keyboard navigation */
+@layer base {
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible {
+    @apply outline-2 outline-offset-2 outline-blue-600 rounded-sm;
+  }
+}
+
+/* Skip link for screen readers */
+.skip-link {
+  @apply absolute -top-10 left-4 z-[100] bg-blue-600 text-white px-4 py-2 rounded-md font-medium;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  @apply top-4;
+}
+
 /* IBM Plex Sans utility classes */
 .ibm-plex-sans {
   font-family: "IBM Plex Sans", sans-serif;

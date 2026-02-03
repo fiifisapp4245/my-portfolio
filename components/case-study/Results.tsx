@@ -24,7 +24,7 @@ export function CaseStudyResults({ results }: CaseStudyResultsProps) {
               <div className="flex flex-wrap gap-4 pt-4 border-t border-zinc-100">
                 {result.before && (
                   <div className="flex-1 min-w-[150px]">
-                    <span className="text-xs font-medium text-zinc-400 uppercase tracking-wide">
+                    <span className="text-xs font-medium text-zinc-500 uppercase tracking-wide">
                       Before
                     </span>
                     <p className="text-sm text-zinc-500 mt-1">{result.before}</p>

@@ -122,7 +122,7 @@ export default function SelectedWorks() {
             disabled={currentIndex === 0}
             className="h-10 w-10 rounded-full border border-zinc-200 bg-white text-zinc-400 flex items-center justify-center transition-colors hover:border-zinc-300 hover:text-zinc-600 disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <ChevronLeftIcon size={18} className="text-current" />
+            <ChevronLeftIcon size={18} className="text-current" aria-hidden="true" />
           </button>
           <button
             aria-label="Next project"
@@ -130,14 +130,14 @@ export default function SelectedWorks() {
             disabled={currentIndex >= maxIndex}
             className="h-10 w-10 rounded-full border border-zinc-200 bg-white text-zinc-400 flex items-center justify-center transition-colors hover:border-zinc-300 hover:text-zinc-600 disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <ChevronRightIcon size={18} className="text-current" />
+            <ChevronRightIcon size={18} className="text-current" aria-hidden="true" />
           </button>
         </div>
       </div>
 
       {/* Page indicator - mobile only */}
-      <div className="flex justify-center mb-4 md:hidden">
-        <span className="text-sm text-zinc-400">
+      <div className="flex justify-center mb-4 md:hidden" aria-live="polite">
+        <span className="text-sm text-zinc-500">
           {currentIndex + 1} of {projects.length}
         </span>
       </div>

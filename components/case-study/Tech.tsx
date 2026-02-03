@@ -44,14 +44,14 @@ export function CaseStudyTech({
         {/* Project info */}
         <div className="space-y-6">
           <div>
-            <h3 className="text-sm font-medium text-zinc-400 uppercase tracking-wide mb-2">
+            <h3 className="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-2">
               Role
             </h3>
             <p className="text-zinc-900">{role}</p>
           </div>
 
           <div>
-            <h3 className="text-sm font-medium text-zinc-400 uppercase tracking-wide mb-2">
+            <h3 className="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-2">
               Duration
             </h3>
             <p className="text-zinc-900">{duration}</p>
@@ -59,7 +59,7 @@ export function CaseStudyTech({
 
           {team && (
             <div>
-              <h3 className="text-sm font-medium text-zinc-400 uppercase tracking-wide mb-2">
+              <h3 className="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-2">
                 Team
               </h3>
               <p className="text-zinc-900">{team}</p>
@@ -69,14 +69,14 @@ export function CaseStudyTech({
 
         {/* Tech stack */}
         <div>
-          <h3 className="text-sm font-medium text-zinc-400 uppercase tracking-wide mb-4">
+          <h3 className="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-4">
             Tech Stack
           </h3>
 
           <div className="space-y-4">
             {Object.entries(grouped).map(([category, techs]) => (
               <div key={category}>
-                <span className="text-xs text-zinc-400">
+                <span className="text-xs text-zinc-500">
                   {categoryLabels[category] || category}
                 </span>
                 <div className="flex flex-wrap gap-2 mt-1">

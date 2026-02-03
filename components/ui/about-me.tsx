@@ -35,7 +35,7 @@ export default function AboutMe() {
         <div>
           <h2 className="text-3xl md:text-4xl font-semibold text-zinc-900 mb-6">
             Hey! I'm Fiifi.{" "}
-            <span className="inline-block" aria-label="waving hand">
+            <span className="inline-block" role="img" aria-label="waving hand">
               👋🏾
             </span>
           </h2>
@@ -101,7 +101,7 @@ export default function AboutMe() {
                     <h3 className="font-semibold text-zinc-900">
                       {job.company}
                     </h3>
-                    <span className="text-sm text-zinc-400">{job.period}</span>
+                    <span className="text-sm text-zinc-500">{job.period}</span>
                   </div>
                   <p className="text-sm text-zinc-500">{job.role}</p>
                 </div>

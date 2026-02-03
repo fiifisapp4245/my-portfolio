@@ -43,7 +43,7 @@ export default function Header() {
           <Image src="/fiifis_logo.svg" alt="Fiifi logo" width={84} height={24} />
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -58,20 +58,26 @@ export default function Header() {
         {/* Mobile */}
         <div className="md:hidden">
           <button
-            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
             onClick={() => setOpen((s) => !s)}
             className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-white/70 text-zinc-900 backdrop-blur transition-colors hover:bg-white"
           >
             {open ? (
-              <CloseIcon className="text-zinc-900" size={18} aria-hidden />
+              <CloseIcon className="text-zinc-900" size={18} aria-hidden="true" />
             ) : (
-              <MenuIcon className="text-zinc-900" size={18} aria-hidden />
+              <MenuIcon className="text-zinc-900" size={18} aria-hidden="true" />
             )}
           </button>
 
           {open && (
-            <div className="fixed left-4 right-4 top-20 rounded-2xl bg-white/95 backdrop-blur-md border border-zinc-200 shadow-lg p-6 animate-in fade-in slide-in-from-top-2 duration-200">
-              <ul className="flex flex-col gap-1">
+            <nav
+              id="mobile-nav"
+              aria-label="Mobile navigation"
+              className="fixed left-4 right-4 top-20 rounded-2xl bg-white/95 backdrop-blur-md border border-zinc-200 shadow-lg p-6 animate-in fade-in slide-in-from-top-2 duration-200"
+            >
+              <ul className="flex flex-col gap-1" role="list">
                 {navItems.map((item) => (
                   <li key={item.href}>
                     <a
@@ -84,7 +90,7 @@ export default function Header() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           )}
         </div>
       </div>

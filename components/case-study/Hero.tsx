@@ -24,7 +24,7 @@ export function CaseStudyHero({ project }: CaseStudyHeroProps) {
 
         {/* Project index and category */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="text-sm font-medium text-zinc-400">
+          <span className="text-sm font-medium text-zinc-500">
             {project.index}
           </span>
           <span className="h-1 w-1 rounded-full bg-zinc-300" />

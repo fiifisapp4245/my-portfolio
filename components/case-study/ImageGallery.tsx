@@ -60,6 +60,7 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -79,6 +80,7 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -92,7 +94,11 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
         )}
 
         {/* Image Counter */}
-        <div className="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/60 text-white text-sm">
+        <div
+          className="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-black/60 text-white text-sm"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           {currentIndex + 1} / {images.length}
         </div>
       </div>
@@ -106,7 +112,7 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
 
       {/* Thumbnail Navigation */}
       {images.length > 1 && (
-        <div className="mt-6 flex gap-3 justify-center flex-wrap">
+        <div className="mt-6 flex gap-3 justify-center flex-wrap" role="group" aria-label="Image thumbnails">
           {images.map((image, index) => (
             <button
               key={index}
@@ -116,11 +122,12 @@ export function ImageGallery({ images, title }: ImageGalleryProps) {
                   ? "border-blue-600 ring-2 ring-blue-600/20"
                   : "border-zinc-200 hover:border-zinc-400"
               }`}
-              aria-label={`View image ${index + 1}`}
+              aria-label={`View image ${index + 1}: ${image.alt}`}
+              aria-current={index === currentIndex ? "true" : undefined}
             >
               <Image
                 src={image.src}
-                alt={image.alt}
+                alt=""
                 fill
                 className="object-cover"
                 sizes="80px"

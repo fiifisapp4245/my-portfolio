@@ -24,7 +24,7 @@ export function CaseStudyMetrics({ metrics }: CaseStudyMetricsProps) {
               {metric.label}
             </div>
             {metric.description && (
-              <p className="text-xs text-zinc-400">{metric.description}</p>
+              <p className="text-xs text-zinc-500">{metric.description}</p>
             )}
           </div>
         ))}

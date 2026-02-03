@@ -22,8 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning className={`${ibmPlex.variable} antialiased bg-white`}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Header />
-        {children}
+        <main id="main-content">
+          {children}
+        </main>
       </body>
     </html>
   );
