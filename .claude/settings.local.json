@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(taskkill:*)",
+      "Bash(timeout:*)",
+      "Bash(Remove-Item -Force -ErrorAction SilentlyContinue \"c:\\\\Dev\\\\my-portfolio\\\\.next\\\\dev\\\\lock\")",
+      "Bash(Write-Host \"Lock file removed. Run ''npm run dev'' now.\")",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd case study pages, about, contact, testimonials sections\n\n- Add dynamic project pages with case study components\n- Add About Me section with work experience cards\n- Add Contact section with social links\n- Add Testimonials section\n- Redesign Selected Works with card navigation\n- Fix header navigation for cross-page routing\n- Add scroll margin for fixed header\n- Add project images and image gallery carousel\n- Add Other Projects section at end of case studies\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}

@@ -1,4 +1,6 @@
+'use client'
 import Image from "next/image";
+import posthog from "posthog-js";
 
 const contactLinks = [
   {
@@ -70,6 +72,7 @@ export default function Contact() {
                 ? "noopener noreferrer"
                 : undefined
             }
+            onClick={() => posthog.capture('hire_me_click', { channel: contact.label })}
             aria-label={`${contact.label}: ${contact.value}${contact.href.startsWith("http") ? " (opens in new tab)" : ""}`}
             className="group flex flex-col items-start"
           >

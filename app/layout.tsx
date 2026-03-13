@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "../components/ui/header";
+import { Analytics } from "../providers/PostHogProvider";
 
 const ibmPlex = IBM_Plex_Sans({
   variable: "--font-sans",
@@ -22,13 +23,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning className={`${ibmPlex.variable} antialiased bg-white`}>
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
-        <Header />
-        <main id="main-content">
-          {children}
-        </main>
+        <Analytics>
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
+          <Header />
+          <main id="main-content">
+            {children}
+          </main>
+        </Analytics>
       </body>
     </html>
   );

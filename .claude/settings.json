@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(powershell -Command \"Remove-Item -LiteralPath ''nul'' -Force\")",
+      "Bash(powershell -Command \"Remove-Item -LiteralPath ''C:\\\\Dev\\\\my-portfolio\\\\nul'' -Force\")",
+      "Bash(powershell -Command \"Get-ChildItem -Force | Where-Object { $_.Name -eq ''nul'' }\")",
+      "Bash(cmd /c \"del \\\\?\\\\C:\\\\Dev\\\\my-portfolio\\\\nul\")"
+    ]
+  }
+}

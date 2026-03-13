@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import posthog from "posthog-js";
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -48,6 +49,20 @@ export default function Hero() {
     }, heroRef);
 
     return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          posthog.capture('scrolled_fold');
+          observer.disconnect();
+        }
+      },
+      { threshold: 0 }
+    );
+    if (heroRef.current) observer.observe(heroRef.current);
+    return () => observer.disconnect();
   }, []);
 
   return (

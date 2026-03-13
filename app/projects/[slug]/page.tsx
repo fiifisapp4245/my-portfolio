@@ -16,6 +16,7 @@ import { FigmaPrototype } from "@/components/case-study/FigmaPrototype";
 import { ImageGallery } from "@/components/case-study/ImageGallery";
 import { OtherProjects } from "@/components/case-study/OtherProjects";
 import Contact from "@/components/ui/contact";
+import { CaseStudyTracker } from "@/components/case-study/CaseStudyTracker";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -63,6 +64,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main className="min-h-screen bg-white">
+      <CaseStudyTracker projectName={project.title} />
       <CaseStudyHero project={project} />
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6 py-16 space-y-20">

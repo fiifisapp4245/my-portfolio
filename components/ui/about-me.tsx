@@ -1,4 +1,6 @@
+'use client'
 import Image from "next/image";
+import posthog from "posthog-js";
 
 const workExperience = [
   {
@@ -79,6 +81,7 @@ export default function AboutMe() {
           <a
             href="/fiifi-appiah-resume.pdf"
             download
+            onClick={() => posthog.capture('hire_me_click', { channel: 'Resume Download' })}
             className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 bg-zinc-900 text-white text-sm font-medium rounded-full hover:bg-zinc-800 transition-colors"
           >
             <svg
